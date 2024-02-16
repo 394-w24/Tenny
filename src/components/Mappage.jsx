@@ -8,6 +8,30 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { useDbData } from '../utilities/firebase';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
+import './MapPage.css';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalfAlt, faStar as farStar } from '@fortawesome/free-solid-svg-icons';
+
+const RatingStars = ({ rating }) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    
+    return (
+      <>
+        {[...Array(fullStars)].map((_, i) => (
+          <FontAwesomeIcon key={`full-${i}`} icon={faStar} className='star'/>
+        ))}
+        {halfStar && <FontAwesomeIcon icon={faStarHalfAlt} className='star' />}
+        {[...Array(emptyStars)].map((_, i) => (
+          <FontAwesomeIcon key={`empty-${i}`} icon={farStar} className='star' />
+        ))}
+      </>
+    );
+  };
+  
 
 const customIcon = new L.Icon({
     iconUrl: icon,
@@ -68,15 +92,30 @@ const MapPage = () => {
                                             <Card style={{ width: '18rem' }}>
                                                 <Card.Img variant="top" src={buddy.buddy.image_url} />
                                                 <Card.Body>
-                                                    <Card.Title>{buddy.buddy.name}</Card.Title>
-                                                    <Card.Text>
+                                                    <Card.Title style={{marginLeft: '15px'}}><b>{buddy.buddy.name}</b></Card.Title>
+                                                    {/* <Card.Text>
                                                         Age: {buddy.buddy.age}<br/>
                                                         Ethinicity: {buddy.buddy.ethinicity}<br/>
                                                         Rating: {buddy.buddy.rating}/5.0<br/>
                                                         # Favours: {buddy.buddy.favor_count}
-                                                    </Card.Text>
+                                                    </Card.Text> */}
+                                                    <ListGroup variant="flush">
+                                                        <ListGroup.Item>Age: {buddy.buddy.age}</ListGroup.Item>
+                                                        <ListGroup.Item>Ethinicity: {buddy.buddy.ethinicity}</ListGroup.Item>
+                                                        <ListGroup.Item>Rating: <RatingStars rating={buddy.buddy.rating} /> ({buddy.buddy.rating}/5.0) </ListGroup.Item>
+                                                        <ListGroup.Item>No. of Favours: {buddy.buddy.favor_count}</ListGroup.Item>
+                                                        <ListGroup.Item style={{marginTop: '5px'}}> <Button style={{backgroundColor: '#552b90'}}>Message {buddy.buddy.name.split(' ')[0]}</Button></ListGroup.Item>
+                                                    </ListGroup>
                                                 </Card.Body>
                                             </Card>
+                                            {/* <div style={cardStyle}>
+                                                <div style={closeButtonStyle}>×</div>
+                                                <img src={buddy.buddy.image_url} alt={tenant.name} style={imageStyle} />
+                                                <div style={contentStyle}>
+                                                    <h3 style={nameStyle}>{buddy.buddy.name}</h3>
+                                                    <p style={ageStyle}>Age {buddy.buddy.age}</p>
+                                                 </div>
+                                            </div> */}
                                         </div>
                                     // </Carousel.Item>
                             ))}
