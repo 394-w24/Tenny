@@ -5,6 +5,7 @@ import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { useDbData } from '../utilities/firebase';
 const customIcon = new L.Icon({
     iconUrl: icon,
     iconRetinaUrl: iconRetina,
@@ -17,7 +18,10 @@ const customIcon = new L.Icon({
 
 const MapPage = () => {
 
-
+    const proxyData = useDbData("proxies/")
+    // if(proxyData[0] == undefined){
+    //     return (<div></div>)
+    // }
     return(
         <div>
             <MapContainer
@@ -30,7 +34,7 @@ const MapPage = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
-                <Marker position={[40, 83]} icon={customIcon}>
+                <Marker position={[40, -83]} icon={customIcon}>
                     <Popup>
                         <div className="card" style={{ width: '10rem' }}>
                             <img src={"https://media.istockphoto.com/id/153011771/photo/cheerful-senior-man.jpg?s=612x612&w=0&k=20&c=BYpISz7fcryegrzbLGVv9pqu7ENRyEKw9QqMxfp4ahw="} className="card-img-top" alt="Trip photo" width="150" height="150"/ >
