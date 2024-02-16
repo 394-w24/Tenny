@@ -16,15 +16,15 @@ const customIcon = new L.Icon({
   });
 
 const MapPage = () => {
-    
+
 
     return(
         <div>
             <MapContainer
-                center={[40, 83]}
+                center={[40, -83]}
                 zoom={10}
                 style={{ height: "1000px", width: "100%" }}
-                
+
             >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -43,11 +43,6 @@ const MapPage = () => {
  
             </MapContainer>
         </div>
-
-        
-
-
-
     )
 }
 
