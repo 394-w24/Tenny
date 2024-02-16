@@ -101,21 +101,15 @@ const MapPage = () => {
                                                     </Card.Text> */}
                                                     <ListGroup variant="flush">
                                                         <ListGroup.Item>Age: {buddy.buddy.age}</ListGroup.Item>
-                                                        <ListGroup.Item>Ethinicity: {buddy.buddy.ethinicity}</ListGroup.Item>
+                                                        {/* <ListGroup.Item>Ethinicity: {buddy.buddy.ethinicity}</ListGroup.Item> */}
+                                                        <ListGroup.Item>Hourly Rate: ${buddy.buddy.rate}</ListGroup.Item>
                                                         <ListGroup.Item>Rating: <RatingStars rating={buddy.buddy.rating} /> ({buddy.buddy.rating}/5.0) </ListGroup.Item>
                                                         <ListGroup.Item>No. of Favours: {buddy.buddy.favor_count}</ListGroup.Item>
-                                                        <ListGroup.Item style={{marginTop: '5px'}}> <Button style={{backgroundColor: '#552b90'}}>Message {buddy.buddy.name.split(' ')[0]}</Button></ListGroup.Item>
+                                                        {/* <ListGroup.Item style={{marginTop: '5px'}}> <Button style={{backgroundColor: '#552b90'}}>Message {buddy.buddy.name.split(' ')[0]}</Button></ListGroup.Item> */}
                                                     </ListGroup>
                                                 </Card.Body>
                                             </Card>
-                                            {/* <div style={cardStyle}>
-                                                <div style={closeButtonStyle}>×</div>
-                                                <img src={buddy.buddy.image_url} alt={tenant.name} style={imageStyle} />
-                                                <div style={contentStyle}>
-                                                    <h3 style={nameStyle}>{buddy.buddy.name}</h3>
-                                                    <p style={ageStyle}>Age {buddy.buddy.age}</p>
-                                                 </div>
-                                            </div> */}
+                                        
                                         </div>
                                     // </Carousel.Item>
                             ))}
