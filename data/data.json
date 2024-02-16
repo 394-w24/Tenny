@@ -1,0 +1,17 @@
+{
+    "proxies": [
+        {
+            "name": "Kedar Khedekar",
+            "age": 26,
+            "address": {
+                "street": "1725 Orrington Avenue",
+                "city": "Evanston",
+                "state": "Illinois",
+                "zip": "60201"
+            },
+            "latitue": "",
+            "longitue": "",
+            "rate": 20
+        }
+    ]
+}
