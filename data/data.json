@@ -1,17 +1,80 @@
 {
-    "proxies": [
+    "buddies": [
         {
-            "name": "Kedar Khedekar",
-            "age": 26,
+            "name": "Dawn Mcguire",
+            "age": 33,
             "address": {
-                "street": "1725 Orrington Avenue",
-                "city": "Evanston",
-                "state": "Illinois",
-                "zip": "60201"
+            "street": "1725 Orrington Avenue",
+            "city": "Evanston",
+            "state": "Illinois",
+            "zip": "60201"
             },
-            "latitue": "",
-            "longitue": "",
-            "rate": 20
+            "latitude": 42.048448,
+            "longitude": -87.678001,
+            "rate": 23,
+            "rating": 4.3,
+            "ratings_count": 20,
+            "ethnicity": "Asian",
+            "linkedin": "https://www.linkedin.com/in/dawn-mcguire/",
+            "favor_count": 16,
+            "image_url":"https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Dawn%20Mcguire.webp?alt=media&token=281ef258-b9fd-40b7-9336-27dfbea0aa51"
+        },
+        {
+            "name": "Gregory Robertson",
+            "age": 28,
+            "address": {
+            "street": "1725 Orrington Avenue",
+            "city": "Evanston",
+            "state": "Illinois",
+            "zip": "60201"
+            },
+            "latitude": 42.046839,
+            "longitude": -87.679954,
+            "rate": 25,
+            "rating": 4.7,
+            "ratings_count": 36,
+            "ethnicity": "African",
+            "linkedin": "https://www.linkedin.com/in/gregory-robertson/",
+            "favor_count": 12,
+            "image_url": "https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Gregory%20Robertson.webp?alt=media&token=1534f32b-15b0-4d14-a789-8bd131fb1a41"
+        },
+        {
+            "name": "Jean Saunders",
+            "age": 36,
+            "address": {
+            "street": "1725 Orrington Avenue",
+            "city": "Evanston",
+            "state": "Illinois",
+            "zip": "60201"
+            },
+            "latitude": 42.051707,
+            "longitude": -87.685157,
+            "rate": 17,
+            "rating": 4.3,
+            "ratings_count": 36,
+            "ethnicity": "Hispanic",
+            "linkedin": "https://www.linkedin.com/in/jean-saunders/",
+            "favor_count": 7,
+            "image_url": "https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Jean%20Saunders.webp?alt=media&token=4ea399f1-18ff-4c14-8e42-2e650ab35b7f"
+        },
+        {
+            "name": "Joshua Liu",
+            "age": 25,
+            "address": {
+            "street": "1725 Orrington Avenue",
+            "city": "Evanston",
+            "state": "Illinois",
+            "zip": "60201"
+            },
+            "latitude": 42.045214,
+            "longitude": -87.680490,
+            "rate": 23,
+            "rating": 3.7,
+            "ratings_count": 44,
+            "ethnicity": "Native American",
+            "linkedin": "https://www.linkedin.com/in/joshua-liu/",
+            "favor_count": 29,
+            "image_url": "https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Joshua%20Liu.webp?alt=media&token=94d0df1d-8d98-4e83-8910-e6935c812bb0"
         }
     ]
 }
