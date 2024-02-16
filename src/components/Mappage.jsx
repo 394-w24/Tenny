@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import React, { useState, useEffect} from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -43,7 +43,28 @@ const customIcon = new L.Icon({
     shadowSize: [41, 41]
   });
 
-const MapPage = () => {
+const ChangeMapView = ({ center, zoom}) => {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+};
+
+const MapPage = ({favor_coord, setFavor_coord}) => {
+
+    const [zoom, setZoom] = useState(10); // Initial zoom level
+
+    // Optionally, use an effect to change the zoom level when favor_coord changes
+    // This example simply sets the zoom to 15 whenever favor_coord changes,
+    // but you can implement any logic you need here.
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+    useEffect(() => {
+        if (!isFirstLoad) {
+            setZoom(15); // Adjust the zoom only after the initial load
+        } else {
+            setIsFirstLoad(false); // After the first run, mark it so future runs can adjust the zoom
+        }
+    }, [favor_coord]); // Depend on favor_coord
 
     const buddies = useDbData("buddies/");
 
@@ -72,8 +93,8 @@ const MapPage = () => {
     return(
         <div>
             <MapContainer
-                center={[42.048860, -87.679890]}
-                zoom={10}
+                center={favor_coord}
+                zoom={zoom}
                 style={{ height: "1000px", width: "100%" }}
 
             >
@@ -117,6 +138,7 @@ const MapPage = () => {
                         </Popup>
                     </Marker>
                 ))}
+                <ChangeMapView center={favor_coord} zoom={zoom}/>
             </MapContainer>
         </div>
     )
