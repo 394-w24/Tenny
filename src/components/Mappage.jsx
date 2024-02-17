@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt, faStar as farStar } from '@fortawesome/free-solid-svg-icons';
+import getDistanceFromLatLonInMiles from '../utilities/distanceCalculator';
 
 const RatingStars = ({ rating }) => {
     const fullStars = Math.floor(rating);
@@ -126,6 +127,7 @@ const MapPage = ({favor_coord, setFavor_coord}) => {
                                                         <ListGroup.Item>Hourly Rate: ${buddy.buddy.rate}</ListGroup.Item>
                                                         <ListGroup.Item>Rating: <RatingStars rating={buddy.buddy.rating} /> ({buddy.buddy.rating}/5.0) </ListGroup.Item>
                                                         <ListGroup.Item>No. of Favours: {buddy.buddy.favor_count}</ListGroup.Item>
+                                                        {(favor_coord[0] != 41.8) && <ListGroup.Item>Distance to Favor: {getDistanceFromLatLonInMiles(buddy.buddy.latitude, buddy.buddy.longitude, favor_coord[0], favor_coord[1]).toFixed(2)} miles</ListGroup.Item>}
                                                         {/* <ListGroup.Item style={{marginTop: '5px'}}> <Button style={{backgroundColor: '#552b90'}}>Message {buddy.buddy.name.split(' ')[0]}</Button></ListGroup.Item> */}
                                                     </ListGroup>
                                                 </Card.Body>
