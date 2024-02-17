@@ -33,7 +33,7 @@ const Banner = ({favor_coord, setFavor_coord}) => {
         <Navbar expand="lg" className="bg-body-tertiary" fixed="top">
             <Container>
             <Navbar.Brand href="#home">Tenny</Navbar.Brand>
-            <Form inline>
+            <Form className="d-flex">
                 <Row>
                 <Col xs="auto">
                     <Form.Control
