@@ -38,14 +38,14 @@ const Banner = ({favor_coord, setFavor_coord}) => {
                 <Col xs="auto">
                     <Form.Control
                     type="text"
-                    placeholder="Search"
+                    placeholder="Favor location"
                     className=" mr-sm-2"
                     value={locationName} // Set the input element's value to our state variable
                     onChange={handleInputChange} // Update the state variable every time the user types
                     />
                 </Col>
                 <Col xs="auto">
-                    <Button onClick={onSubmit} type="submit">Submit</Button>
+                    <Button onClick={onSubmit} type="submit">Search</Button>
                 </Col>
                 </Row>
             </Form>
@@ -69,7 +69,7 @@ const Banner = ({favor_coord, setFavor_coord}) => {
             </Navbar.Collapse> */}
             </Container>
         </Navbar>
-        <Navbar expand="lg" className="bg-body-tertiary" fixed="bottom">
+        {/* <Navbar expand="lg" className="bg-body-tertiary" fixed="bottom">
             <Container>
             <Navbar.Brand href="#home" placement="end">
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-`} />
@@ -80,7 +80,7 @@ const Banner = ({favor_coord, setFavor_coord}) => {
                 />
             </Navbar.Brand>
             </Container>
-        </Navbar>
+        </Navbar> */}
         </div>
     )
 
