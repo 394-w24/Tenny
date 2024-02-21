@@ -1,26 +1,29 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+const Banner = () => {
+  const [value, setValue] = React.useState(0);
 
-const Banner = () =>{
-    
-    return (
-        <Navbar expand="lg" className="bg-body-tertiary" fixed="bottom">
-            <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Service</Nav.Link>
-                    <Nav.Link href="#link">Chat</Nav.Link>
-                    <Nav.Link href="#link">Profile</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
-    );
-    
-    
-}
+  return (
+    <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 100 }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction label="Service" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Chat" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Profile" icon={<LocationOnIcon />} />
+      </BottomNavigation>
+    </Box>
+  );
+};
 
 export default Banner;
