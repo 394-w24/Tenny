@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MapPage from './components/Mappage';
+import servicePage from './components/servicePage';
+import Banner from './components/Banner';
 
 const App = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <div >
-      <MapPage />
+    <div>
+      <Banner></Banner>
     </div>
   );
 };
