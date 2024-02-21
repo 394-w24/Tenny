@@ -1,0 +1,15 @@
+.serviceCardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 17rem));
+    grid-column-gap: 30px;
+    font-family: "DM Serif Display", serif;
+  }
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .serviceCardList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
