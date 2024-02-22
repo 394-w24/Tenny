@@ -1,0 +1,11 @@
+.bp-widget.bp-widget-opened {
+    position: fixed !important;
+    bottom: 50% !important;
+    right: 50% !important;
+    transform: translate(50%, 50%) !important;
+    /* Adjust width and height as needed */
+    width: 90% !important;
+    max-width: 400px !important;
+    height: 600px !important;
+  }
+  
