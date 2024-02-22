@@ -10,7 +10,7 @@ const data = [
       serviceDescription : "Click through our list of verified alumni to get personalized guidance on anything related to life as an international student.",
   },
   {
-      serviceName : "Virtual Tour",
+      serviceName : "Virtual Tour Guide",
       pictureUrl: "https://reslife.media.uconn.edu/wp-content/uploads/sites/3384/2022/12/virtual-tour-icon.png",
       serviceDescription : "Need to tour your apartment choices remotely? \nNo problem with our virtual tour-guide, just select your desired apartment listings.",
   },
@@ -20,7 +20,7 @@ const data = [
       serviceDescription : "Want to know more about your new neighborhood? \nType in your new address and select from the list of culturally relevant neighborhood reports to learn about customs, safety, local groceries, and more!",
   },
   {
-      serviceName : "Leasing Application Assistance",
+      serviceName : "Leasing Application",
       pictureUrl: "https://static.thenounproject.com/png/3605911-200.png",
       serviceDescription : "Getting stuck on the leasing application process? \nIt’s no problem with Tenny! \nClick the link to be connected with a Tenny team member who will help you.",
   },
@@ -28,6 +28,26 @@ const data = [
       serviceName : "Move In",
       pictureUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyzkZQCQKf4Lc06wvPqoJnGa6-iL847pmgcg&usqp=CAU",
       serviceDescription : "Feeling lost about the big move-in day? \nClick over to be connected with a Tenny team member who will give you personalized guidance, mover recommendations, and furniture resources.",
+  },
+  {
+    serviceName : "Move Out",
+    pictureUrl: "https://static.thenounproject.com/png/1809950-200.png",
+    serviceDescription : "",
+  },
+  {
+    serviceName : "Personal Concierge",
+    pictureUrl: "https://cdn4.vectorstock.com/i/1000x1000/34/83/bellboy-concierge-hotel-reception-icon-simple-vector-33563483.jpg",
+    serviceDescription : "",
+  },
+  {
+    serviceName : "Banking set-up assistance",
+    pictureUrl: "https://static.vecteezy.com/system/resources/previews/020/716/209/original/flat-icon-bank-bank-icon-where-to-keep-money-illustration-of-saving-in-the-bank-free-png.png",
+    serviceDescription : "",
+  },
+  {
+    serviceName : "Utility application Assistance",
+    pictureUrl: "https://cdn5.vectorstock.com/i/1000x1000/58/94/set-4-utilities-icons-in-home-symbols-power-vector-25235894.jpg",
+    serviceDescription : "",
   }
 ]
 
@@ -52,6 +72,18 @@ const ServicePage = () => {
       </Grid>
       <Grid item xs={6} sm={6} md={4} lg={4}>
         <ServiceCard serviceId={5} serviceName={data[4].serviceName} pictureUrl={data[4].pictureUrl} serviceDescription ={data[4].serviceDescription}/>
+      </Grid>
+      <Grid item xs={6} sm={6} md={4} lg={4}>
+        <ServiceCard serviceId={5} serviceName={data[5].serviceName} pictureUrl={data[5].pictureUrl} serviceDescription ={data[5].serviceDescription}/>
+      </Grid>
+      <Grid item xs={6} sm={6} md={4} lg={4}>
+        <ServiceCard serviceId={5} serviceName={data[6].serviceName} pictureUrl={data[6].pictureUrl} serviceDescription ={data[6].serviceDescription}/>
+      </Grid>
+      <Grid item xs={6} sm={6} md={4} lg={4}>
+        <ServiceCard serviceId={5} serviceName={data[7].serviceName} pictureUrl={data[7].pictureUrl} serviceDescription ={data[7].serviceDescription}/>
+      </Grid>
+      <Grid item xs={6} sm={6} md={4} lg={4}>
+        <ServiceCard serviceId={5} serviceName={data[8].serviceName} pictureUrl={data[8].pictureUrl} serviceDescription ={data[8].serviceDescription}/>
       </Grid>
     </Grid>
     </>

@@ -10,13 +10,18 @@ import { useNavigate } from 'react-router-dom';
 const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) => {
 
   const navigate = useNavigate()
-  const handleClick = () => {
-    console.log("clicked")
-    navigate('/serviceDescription/'+ serviceId)
+  const handleClick = (serviceDescription) => {
+    console.log(serviceDescription)
+    if (serviceDescription.length > 0) {
+      console.log("clicked")
+      navigate('/serviceDescription/'+ serviceId)
+    } else {
+      console.log("no service description")
+    }
   }
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={handleClick}>
+      <CardActionArea onClick={() => handleClick(serviceDescription)}>
         <CardMedia
           component="img"
           height="140"
@@ -28,7 +33,7 @@ const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) =
             {serviceName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {serviceDescription}
+            {/* {serviceDescription} */}
           </Typography>
         </CardContent>
       </CardActionArea>
