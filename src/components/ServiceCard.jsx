@@ -1,26 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const ServiceCard = ({ serviceId, serviceName, pictureUrl, simpleView }) => (
-  <Card sx={{ maxWidth: 285 }}> {/* Adjust the width as needed */}
-    {/* Adjust the height as needed */}
-    <CardMedia
-      component="img"
-      height="140"
-      image={pictureUrl}
-      alt="service photo"
-    />
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="div">
-        {serviceName}
-      </Typography>
-      {/* If you need to add more content or actions, you can do so here */}
-    </CardContent>
-  </Card>
-);
 
-export default ServiceCard;
+const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) => {
+
+  const navigate = useNavigate()
+  const handleClick = (serviceDescription) => {
+    console.log(serviceDescription)
+    if (serviceDescription.length > 0) {
+      console.log("clicked")
+      navigate('/serviceDescription/'+ serviceId)
+    } else {
+      console.log("no service description")
+    }
+  }
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea onClick={() => handleClick(serviceDescription)}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={pictureUrl}
+          alt={serviceName}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {serviceName}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {/* {serviceDescription} */}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export default ServiceCard
