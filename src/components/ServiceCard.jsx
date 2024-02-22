@@ -12,7 +12,7 @@ const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) =
   const navigate = useNavigate()
   const handleClick = () => {
     console.log("clicked")
-    navigate('/serviceDescription')
+    navigate('/serviceDescription/'+ serviceId)
   }
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -21,7 +21,7 @@ const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) =
           component="img"
           height="140"
           image={pictureUrl}
-          alt="green iguana"
+          alt={serviceName}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
