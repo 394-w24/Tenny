@@ -1,33 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const ServiceCard = ({ serviceId, serviceName, pictureUrl }) => {
 
-  const fontSize = serviceName.length > 20 ? '1.1rem' : '1.1rem';
-  // Wrap the Card component with Link
-  // You might need to adjust the URL path according to your routing setup
+const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) => {
+
+  const navigate = useNavigate()
+  const handleClick = () => {
+    console.log("clicked")
+    navigate('/serviceDescription')
+  }
   return (
-    <Link to={`/services/${serviceId}`} style={{ textDecoration: 'none' }}>
-      <Card sx={{ maxWidth: 285, cursor: 'pointer' }}> {/* Adjust the width as needed */}
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           component="img"
           height="140"
           image={pictureUrl}
-          alt="service photo"
+          alt="green iguana"
         />
         <CardContent>
-        <Typography gutterBottom variant="h5" component="div" style={{ fontSize }}>
+          <Typography gutterBottom variant="h5" component="div">
             {serviceName}
           </Typography>
-          {/* If you need to add more content or actions, you can do so here */}
+          <Typography variant="body2" color="text.secondary">
+            {serviceDescription}
+          </Typography>
         </CardContent>
-      </Card>
-    </Link>
-  )
-};
+      </CardActionArea>
+    </Card>
+  );
+}
 
-export default ServiceCard;
+export default ServiceCard
