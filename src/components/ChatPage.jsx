@@ -9,6 +9,8 @@ const ChatPage = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
 
+  console.log("api key: " + import.meta.env.VITE_REACT_APP_OPENAI_API_KEY);
+
   const handleSubmit = () => {
     const prompt = {
       role: "user",
@@ -26,7 +28,7 @@ const ChatPage = () => {
     fetch("https://api.openai.com/v1/assistants", {
       method: "GET",
       headers: {
-        Authorization: `Bearer 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`,
+        Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
         "Content-Type": "application/json",
         "OpenAI-Beta": "assistants=v1",
         "model": "gpt-3.5-turbo",
@@ -40,7 +42,7 @@ const ChatPage = () => {
       fetch("https://api.openai.com/v1/threads", {
         method: "POST",
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
           "Content-Type": "application/json",
           "OpenAI-Beta": "assistants=v1",
           // "model": "gpt-3.5-turbo",
@@ -53,7 +55,7 @@ const ChatPage = () => {
         fetch(`https://api.openai.com/v1/threads/${thread}/messages`, {
           method: "POST",
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
             "Content-Type": "application/json",
             "OpenAI-Beta": "assistants=v1",
           },
@@ -69,7 +71,7 @@ const ChatPage = () => {
           fetch(`https://api.openai.com/v1/threads/${thread}/runs`, {
             method: "POST",
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
               "Content-Type": "application/json",
               "OpenAI-Beta": "assistants=v1",
             },
@@ -90,7 +92,7 @@ const ChatPage = () => {
                 fetch(`https://api.openai.com/v1/threads/${thread}/runs/${runId}`, {
                   method: "GET",
                   headers: {
-                    Authorization: `Bearer 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`,
+                    Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
                     "Content-Type": "application/json",
                     "OpenAI-Beta": "assistants=v1",
                   },
@@ -106,7 +108,7 @@ const ChatPage = () => {
                       fetch(`https://api.openai.com/v1/threads/${thread}/messages`, {
                         method: "GET",
                         headers: {
-                          Authorization: `Bearer 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`,
+                          Authorization: `Bearer ${import.meta.env.VITE_REACT_APP_OPENAI_API_KEY}`,
                           "Content-Type": "application/json",
                           "OpenAI-Beta": "assistants=v1",
                         },
@@ -127,7 +129,7 @@ const ChatPage = () => {
                       });
                     }
                 });
-              },10000)
+              },5000)
             })
         })
       })
