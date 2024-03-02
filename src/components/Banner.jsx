@@ -22,7 +22,7 @@ const Banner = () => {
         navigate('/chat');
         break;
       case 2: // Profile or any other navigation
-        navigate('/profile'); // Adjust the route as per your application's routing
+        navigate('/myprofile'); // Adjust the route as per your application's routing
         break;
       // Add more cases as needed for additional navigation items
       default:

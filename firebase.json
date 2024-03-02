@@ -8,6 +8,7 @@
   },
   "hosting": {
     "public": "dist",
+    "site": "tenny-app",
     "ignore": [
       "firebase.json",
       "**/.*",
