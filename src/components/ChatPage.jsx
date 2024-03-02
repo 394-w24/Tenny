@@ -5,14 +5,17 @@ import Chatbot from "./Chatbot";
 
 import "./ChatPage.css";
 import { getDbData } from "../utilities/firebase";
+import { search_zillow_properties_on_location } from "../utilities/functions";
 
 const ChatPage = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   var apiKey = "";
+  var rapidApiKey = "";
 
   getDbData("/").then((data) => {
     apiKey = data.apiKey;
+    rapidApiKey = data.rapidApiKey;
   });
 
 
@@ -40,7 +43,7 @@ const ChatPage = () => {
       }
     }).then((data) => data.json()
     ).then((data) => {
-      console.log(data);
+      // console.log(data);
       assistant = data.data[0].id
       // console.log(data.data[0].id)
       // Create a new thread
@@ -90,7 +93,7 @@ const ChatPage = () => {
               // console.log(runId)
               status = data.status;
               // Check assistant status
-              console.log(runId);
+              // console.log(runId);
               // var count = 0
               setTimeout(() => {
                 console.log(status);
@@ -132,6 +135,58 @@ const ChatPage = () => {
                           // }
                           // setStatus(data.status);
                       });
+                    }
+                    if(status === "requires_action") {
+                      // console.log(JSON.parse(data.required_action.submit_tool_outputs.tool_calls[0].function.arguments))
+                      var call_id = data.required_action.submit_tool_outputs.tool_calls[0].id
+                      // console.log(call_id)
+                      search_zillow_properties_on_location(rapidApiKey, JSON.parse(data.required_action.submit_tool_outputs.tool_calls[0].function.arguments).location
+                      ).then(data => {
+                        // Submit tool outputs
+                        fetch(`https://api.openai.com/v1/threads/${thread}/runs/${runId}/submit_tool_outputs`, {
+                          method: "POST",
+                          headers: {
+                            Authorization: `Bearer ${apiKey}`,
+                            "Content-Type": "application/json",
+                            "OpenAI-Beta": "assistants=v1",
+                          },
+                          body: JSON.stringify({
+                            tool_outputs: [
+                              {
+                                tool_call_id: call_id,
+                                output: data
+                              }
+                            ]
+                          }),
+                        }).then((data) => data.json()
+                        ).then((data) => {
+                            setTimeout(() => {
+                              fetch(`https://api.openai.com/v1/threads/${thread}/messages`, {
+                              method: "GET",
+                              headers: {
+                                Authorization: `Bearer ${apiKey}`,
+                                "Content-Type": "application/json",
+                                "OpenAI-Beta": "assistants=v1",
+                              },
+                              // body: JSON.stringify({
+                              //   assistant_id: assistant
+                              // }),
+                            }).then((data) => data.json()
+                            ).then((data) => {
+                                // console.log(data);
+                                console.log(data.data[0].content[0].text.value);
+                                // if (data.data[0].content[0].role === "assistant") {
+                                  console.log("setting msg")
+                                  messages1 = [...messages1, {role: "assistant", content: data.data[0].content[0].text.value}];
+                                  // console.log(messages1)
+                                  setMessages(messages1)
+                                // }
+                                // setStatus(data.status);
+                            });
+                            },5000)
+                        });
+                      })
+
                     }
                 });
               },5000)

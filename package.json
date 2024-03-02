@@ -16,9 +16,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "bootstrap": "^5.3.3",
-    "dotenv": "^16.4.5",
     "firebase": "^10.8.1",
-    "openai": "^3.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
@@ -32,7 +30,6 @@
     "@vitest/ui": "^1.0.4",
     "c8": "^8.0.1",
     "jsdom": "^23.0.1",
-    "react-error-overlay": "^6.0.9",
     "vite": "^5.1.1",
     "vitest": "^1.0.4"
   }
