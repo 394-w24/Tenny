@@ -10,7 +10,7 @@ import {
   signInWithPopup,
   signOut,
   signInWithCredential,
-  connectAuthEmulator
+  connectAuthEmulator,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -25,8 +25,16 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-const database = getDatabase(app);
+const database = (import.meta.env.MODE === 'development') connectDatabaseEmulator? getDatabase(app);
 
+
+if (!globalThis.EMULATION && import.meta.env.MODE === 'development') {
+  // connectAuthEmulator(auth, "http://127.0.0.1:9099");
+  connectDatabaseEmulator(database, "127.0.0.1", 9000);
+
+  // set flag to avoid connecting twice, e.g., because of an editor hot-reload
+  globalThis.EMULATION = true;
+}
 
 export const useDbData = (path) => {
   const [data, setData] = useState();

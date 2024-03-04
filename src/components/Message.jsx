@@ -14,7 +14,7 @@ export default function Message({ role, content }) {
         />
       </div>
       <div>
-        <p>{content}</p>
+        <p><pre>{content}</pre></p>
       </div>
     </div>
   );
