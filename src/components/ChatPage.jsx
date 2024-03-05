@@ -110,6 +110,7 @@ const ChatPage = () => {
               // Check assistant status
               // console.log(runId);
               // var count = 0
+              setMessages([...messages1, {role: "assistant", content:"Loading............................"}])
               setTimeout(() => {
                 console.log(status);
                 fetch(`https://api.openai.com/v1/threads/${thread}/runs/${runId}`, {
@@ -151,10 +152,11 @@ const ChatPage = () => {
                           // setStatus(data.status);
                       });
                     }
-                    if(status === "requires_action") {
+                    else if(status === "requires_action") {
                       console.log(data)
                       var call_id = data.required_action.submit_tool_outputs.tool_calls[0].id
                       // console.log(call_id)
+                      setMessages([...messages1, {role: "assistant", content:"Searching on Zillow..............."}])
                       search_zillow_properties_on_location(rapidApiKey, JSON.parse(data.required_action.submit_tool_outputs.tool_calls[0].function.arguments).location
                       ).then(data => {
                         // Submit tool outputs
@@ -175,8 +177,9 @@ const ChatPage = () => {
                           }),
                         }).then((data) => data.json()
                         ).then((data) => {
-                            setTimeout(() => {
-                              fetch(`https://api.openai.com/v1/threads/${thread}/messages`, {
+                          setTimeout(() => {
+                            console.log(status);
+                            fetch(`https://api.openai.com/v1/threads/${thread}/runs/${runId}`, {
                               method: "GET",
                               headers: {
                                 Authorization: `Bearer ${apiKey}`,
@@ -188,20 +191,44 @@ const ChatPage = () => {
                               // }),
                             }).then((data) => data.json()
                             ).then((data) => {
-                                // console.log(data);
-                                console.log(data.data[0].content[0].text.value);
-                                // if (data.data[0].content[0].role === "assistant") {
-                                  console.log("setting msg")
-                                  messages1 = [...messages1, {role: "assistant", content: data.data[0].content[0].text.value}];
-                                  // console.log(messages1)
+                                console.log(data.status);
+                                status = data.status;
+                                if(status === "completed") {
+                                  // Display message
+                                  fetch(`https://api.openai.com/v1/threads/${thread}/messages`, {
+                                    method: "GET",
+                                    headers: {
+                                      Authorization: `Bearer ${apiKey}`,
+                                      "Content-Type": "application/json",
+                                      "OpenAI-Beta": "assistants=v1",
+                                    },
+                                    // body: JSON.stringify({
+                                    //   assistant_id: assistant
+                                    // }),
+                                  }).then((data) => data.json()
+                                  ).then((data) => {
+                                      // console.log(data);
+                                      console.log(data.data[0].content[0].text.value);
+                                      // if (data.data[0].content[0].role === "assistant") {
+                                        console.log("setting msg")
+                                        messages1 = [...messages1, {role: "assistant", content: data.data[0].content[0].text.value}];
+                                        // console.log(messages1)
+                                        setMessages(messages1)
+                                      // }
+                                      // setStatus(data.status);
+                                  });
+                                } else {
+                                  messages1 = [...messages1, {role: "assistant", content: "Failed to get reply from server"}];
                                   setMessages(messages1)
-                                // }
-                                // setStatus(data.status);
-                            });
-                            },5000)
+                                }
+                              });
+                          }, 5000);
                         });
                       })
 
+                    } else {
+                      messages1 = [...messages1, {role: "assistant", content: "Failed to get reply from server"}];
+                      setMessages(messages1)
                     }
                 });
               },5000)
