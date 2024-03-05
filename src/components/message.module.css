@@ -1,14 +1,62 @@
-.wrapper {
-    display: grid;
+.assistant_left {
+    min-height: 60px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px 0px 0px 10px;
+    background-color: rgb(240, 240, 240);
+    color: black;
+  }
+
+  .user_left {
     grid-template-columns: 60px auto;
     min-height: 60px;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 10px;
-    background-color: #1b1b1d;
+    border-radius: 10px 0px 0px 10px;
+    background-color: white;
+    color: black;
+  }
+
+  .assistant_right {
+    min-height: 60px;
+    padding: 20px;
+    border-radius: 0px 10px 10px 0px;
+    margin-bottom: 20px;
+    background-color: rgb(240, 240, 240);
+    color: black;
+  }
+
+  .user_right {
+    grid-template-columns: 60px auto;
+    min-height: 60px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 0px 10px 10px 0px;
+    background-color: white;
+    color: black;
+  }
+
+
+  .text {
+    color : black;
   }
 
   .avatar {
     width: 40px;
     height: 40px;
   }
+
+  .icon {
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+  }
+
+  pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

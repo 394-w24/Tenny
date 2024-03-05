@@ -1,4 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 import Message from "./Message";
 import Chatbot from "./Chatbot";
@@ -12,6 +16,16 @@ const ChatPage = () => {
   const [messages, setMessages] = useState([]);
   var apiKey = "";
   var rapidApiKey = "";
+
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages]);
 
   getDbData("/").then((data) => {
     apiKey = data.apiKey;
@@ -31,6 +45,7 @@ const ChatPage = () => {
     var messages1 = [...messages, prompt]
 
     setMessages([...messages, prompt])
+    setInput("");
 
     // create assistant session
     fetch("https://api.openai.com/v1/assistants", {
@@ -137,7 +152,7 @@ const ChatPage = () => {
                       });
                     }
                     if(status === "requires_action") {
-                      // console.log(JSON.parse(data.required_action.submit_tool_outputs.tool_calls[0].function.arguments))
+                      console.log(data)
                       var call_id = data.required_action.submit_tool_outputs.tool_calls[0].id
                       // console.log(call_id)
                       search_zillow_properties_on_location(rapidApiKey, JSON.parse(data.required_action.submit_tool_outputs.tool_calls[0].function.arguments).location
@@ -197,13 +212,20 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="App">
+    <div>
+      <AppBar position="static">
+        <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
+                Tenny Chat
+            </Typography>
+        </Toolbar>
+      </AppBar>
       <div className="Column">
-        <h3 className="Title">Chat Messages</h3>
         <div className="Content">
           {messages.map((el, i) => {
             return <Message key={i} role={el.role} content={el.content} />;
           })}
+          <div ref={messagesEndRef} />
         </div>
         <Chatbot
           value={input}

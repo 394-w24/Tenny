@@ -21,11 +21,9 @@
   }
 
   .Content {
-    height: calc(100vh - 270px);
+    height: calc(100vh - 230px);
     overflow-y: scroll;
+    /* display: flex; */
     margin-bottom: 20px;
   }
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
