@@ -1,45 +1,54 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom'; // Import RouterLink for navigation
-import { Avatar, Box, Button, Container, Stack } from '@mui/material'; // Import necessary MUI components
-import Card from 'react-bootstrap/Card';
+import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { Avatar, Box, Button, Container, Stack, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { getDbData } from '../utilities/firebase'; // Ensure this is correctly imported
 
 const ProfilePage = () => {
-  const profileImageUrl = 'https://example.com/your-profile-pic.jpg'; // Your profile image URL
+  const [profileData, setProfileData] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(''); // Manage phone number with state
+
+  useEffect(() => {
+    const storedPhoneNumber = localStorage.getItem('userPhoneNumber'); // Retrieve phone number from local storage
+    if (storedPhoneNumber) {
+      setPhoneNumber(storedPhoneNumber); // Update state
+      const fetchData = async () => {
+        const data = await getDbData(`/users/${storedPhoneNumber}`);
+        setProfileData(data);
+      };
+      fetchData();
+    }
+  }, []);
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}> {/* Adjust top margin as needed */}
-      {/* Profile Image */}
-      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}> {/* Adjust bottom margin as needed */}
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
         <Avatar
           alt="Profile"
-          src={profileImageUrl}
-          sx={{ width: 120, height: 120 }} // Adjust size as desired
+          src={profileData?.profileImageUrl || 'https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/defaultProfilePic.webp?alt=media&token=34431a3f-1252-47e8-b80a-46533bed71ed'} // Fallback to a default image if none is provided
+          sx={{ width: 120, height: 120 }}
         />
       </Box>
 
-      <Card style={{ width: '400px', marginBottom: '20px' }}>
-      <Card.Body>
-        <Card.Title>My Profile</Card.Title>
-        <Card.Text>
-          Email Address: johndoe@gmail.com <br/>
-          Age: 25 <br/>
-          Phone Number: 1234567890 <br/>
-        </Card.Text>
-        <Card.Link href="#">Edit Information</Card.Link>
-      </Card.Body>
-    </Card>
+      <Card sx={{ mb: 2 }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            My Profile
+          </Typography>
+          <Typography variant="body1">
+            Email Address: {profileData?.email || 'Loading...'}<br/>
+            Age: {profileData?.age || 'Loading...'}<br/>
+            Phone Number: {phoneNumber || 'Loading...'}<br/>
+          </Typography>
+          <Button component={RouterLink} to="/myprofile">
+            Edit Information
+          </Button>
+        </CardContent>
+      </Card>
 
-      {/* Link Buttons */}
-      <Stack direction="column" spacing={2}> {/* Stack for vertical layout with consistent spacing */}
-        <Button variant="contained" fullWidth component={RouterLink} to="/myDocuments">
-          My Documents
-        </Button>
-        <Button variant="contained" fullWidth component={RouterLink} to="/myApartments">
-          My Apartments
-        </Button>
-        <Button variant="contained" fullWidth component={RouterLink} to="/myProfile">
-          My Profile
-        </Button>
+      <Stack direction="column" spacing={2}>
+        {/* Buttons */}
       </Stack>
     </Container>
   );
