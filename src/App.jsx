@@ -5,9 +5,9 @@ import ServicePage from "./components/ServicePage.jsx";
 import Banner from "./components/Banner.jsx";
 import ChatPage from './components/ChatPage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
-import MyProfile from './components/MyProfile.jsx';
 import ServiceDescription from './components/ServiceDescription.jsx';
 import "bootstrap/dist/css/bootstrap.min.css";
+import ProfileUpdate from './components/ProfileUpdate.jsx';
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/serviceDescription/:id" element={<ServiceDescription/>} />
-        <Route path="/myprofile" element={<MyProfile/>} />
+        <Route path="/myprofile" element={<ProfileUpdate/>} />
       </Routes>
     </BrowserRouter>
   );

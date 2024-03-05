@@ -22,7 +22,16 @@ const Banner = () => {
         navigate('/chat');
         break;
       case 2: // Profile or any other navigation
-        navigate('/myprofile'); // Adjust the route as per your application's routing
+        // Check if the user's phone number is stored in local storage
+        const userPhoneNumber = localStorage.getItem('userPhoneNumber');
+        
+        if (userPhoneNumber) {
+          // If a phone number exists, navigate to the profile page
+          navigate('/profile');
+        } else {
+          // If no phone number is found, navigate to the myprofile page (sign-up page)
+          navigate('/myprofile');
+        }
         break;
       // Add more cases as needed for additional navigation items
       default:
