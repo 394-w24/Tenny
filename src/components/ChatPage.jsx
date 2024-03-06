@@ -240,13 +240,6 @@ const ChatPage = () => {
 
   return (
     <div>
-      <AppBar position="static" style={{backgroundColor:'#2a7646ff'}}>
-        <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }} style={{backgroundColor:'#2a7646ff'}}>
-                Tenny
-            </Typography>
-        </Toolbar>
-      </AppBar>
       <div className="Column">
         <div className="Content">
           {messages.map((el, i) => {
