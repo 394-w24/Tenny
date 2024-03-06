@@ -40,13 +40,14 @@ const Banner = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 100 }}>
+    <Box sx={{ width: '100%', position: 'fixed', bottom: 0, zIndex: 100 }} >
       <BottomNavigation
         showLabels
         value={value}
         onChange={handleChange} // Use the handleChange function
+        style={{color:'#2a7646ff'}}
       >
-        <BottomNavigationAction label="Service" icon={<HomeRepairServiceIcon />} />
+        <BottomNavigationAction label="Service" icon={<HomeRepairServiceIcon />}/>
         <BottomNavigationAction label="Chat" icon={<ChatIcon />} />
         <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} />
       </BottomNavigation>

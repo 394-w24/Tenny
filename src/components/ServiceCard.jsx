@@ -1,44 +1,50 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
+// Styled components for custom styling
+const StyledCardActionArea = styled(CardActionArea)(({ theme }) => ({
+  maxWidth: 345,
+  borderRadius: theme.shape.borderRadius,
+  overflow: 'hidden',
+  boxShadow: 'none', // Remove shadow
+}));
 
-const ServiceCard = ({serviceId, serviceName, pictureUrl, serviceDescription}) => {
+const Image = styled('img')({
+  height: 140,
+  width: '100%',
+  objectFit: 'cover', // Adjust as needed
+  borderRadius: '8px 8px 0 0', // Rounded corners at the top
+});
 
-  const navigate = useNavigate()
-  const handleClick = (serviceDescription) => {
-    console.log(serviceDescription)
+const ServiceCard = ({ serviceId, serviceName, pictureUrl, serviceDescription }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
     if (serviceDescription.length > 0) {
-      console.log("clicked")
-      navigate('/serviceDescription/'+ serviceId)
+      navigate('/serviceDescription/' + serviceId);
     } else {
-      console.log("no service description")
+      console.log("No service description");
     }
-  }
+  };
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={() => handleClick(serviceDescription)}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={pictureUrl}
-          alt={serviceName}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {serviceName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {/* {serviceDescription} */}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <StyledCardActionArea onClick={handleClick}>
+      <Image src={pictureUrl} alt={serviceName} />
+      <Typography 
+        gutterBottom 
+        variant="h6" 
+        component="div" 
+        sx={{
+          fontFamily: "'Lexend', sans-serif", // Ensure Lexend font is loaded in your project
+          color: '#333', // Dark grey
+          padding: '8px',
+        }}>
+        {serviceName}
+      </Typography>
+      {/* Consider adding serviceDescription here if needed, with appropriate styling */}
+    </StyledCardActionArea>
   );
 }
 
-export default ServiceCard
+export default ServiceCard;

@@ -44,7 +44,7 @@ function ProfileUpdate() {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" style={{backgroundColor: '#2a7646ff'}}>
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
                         Sign Up
@@ -96,7 +96,7 @@ function ProfileUpdate() {
                             label="Send me recommendations on email"
                         />
                         {/* Repeat for other fields */}
-                        <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
+                        <Button type="submit" variant="contained" sx={{ mt: 2 }} style={{backgroundColor: '#2a7646ff'}}>
                             Submit
                         </Button>
                     </FormGroup>
