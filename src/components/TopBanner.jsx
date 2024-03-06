@@ -21,14 +21,14 @@ const TopBanner = () => {
   return (
     <AppBar position="sticky" sx={{ top: 0, backgroundColor: '#2a7646ff', zIndex: 1100 }}>
       <Toolbar sx={{ justifyContent: 'center', display: 'flex' }}>
-        <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', marginLeft: '20px' }}>
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Tenny.png?alt=media&token=6fb4668f-d562-498b-a6f0-61069c3acb34"
-            alt="Logo"
-            style={{ height: '50px' }}
-          />
+        <Box sx={{ position: 'absolute', left: 0, display: 'flex', alignItems: 'center', marginLeft: '20px', height: { xs: '30px', sm: '50px' } }}>
+            <img
+                src="https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Tenny.png?alt=media&token=6fb4668f-d562-498b-a6f0-61069c3acb34"
+                alt="Logo"
+                style={{ height: 'inherit' }} // Use inherit to take height from parent Box
+            />
         </Box>
-        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center' }}>
+        <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center', fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           {currentPageName}
         </Typography>
       </Toolbar>
