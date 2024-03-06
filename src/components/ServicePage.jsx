@@ -103,7 +103,7 @@ const ServicePage = () => {
   return (
     <>
     <div className ='center-heading'>
-      <h1 style={{marginTop: '20px', marginBottom: '10px'}}>I need help with</h1>
+      <h1 style={{marginTop: '20px', marginBottom: '10px'}}>I need help with...</h1>
     </div>
     <Box sx={{ flexGrow: 1 }} style={{color: '#2a7646ff', marginBottom: '40px'}} >
       <AppBar position="static">
