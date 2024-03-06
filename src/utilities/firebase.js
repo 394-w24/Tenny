@@ -25,7 +25,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-const database = (import.meta.env.MODE === 'development') connectDatabaseEmulator? getDatabase(app);
+const database = getDatabase(app);
 
 
 if (!globalThis.EMULATION && import.meta.env.MODE === 'development') {
