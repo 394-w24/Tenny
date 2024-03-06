@@ -88,13 +88,6 @@ function ProfilePage() {
 
     return (
         <>
-            <AppBar position="static" style={{ backgroundColor: '#2a7646ff' }}>
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
-                        Profile Settings
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <Container maxWidth="sm" sx={{ mt: 2 }}>
                 <Box sx={{ textAlign: 'left', my: 2 }}>
                     <Avatar alt="User's Picture" src="/bot.png" sx={{ width: 56, height: 56, margin: 'auto' }} />

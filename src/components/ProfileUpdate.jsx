@@ -44,13 +44,6 @@ function ProfileUpdate() {
 
     return (
         <>
-            <AppBar position="static" style={{backgroundColor: '#2a7646ff'}}>
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
-                        Sign Up
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <Container maxWidth="sm" sx={{ mt: 2 }}>
                 <Box component="form" sx={{ margin: '25px' }} onSubmit={handleSubmit} noValidate autoComplete="off">
                     <FormGroup>

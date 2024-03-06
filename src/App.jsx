@@ -3,6 +3,7 @@ import './App.css';
 
 import ServicePage from "./components/ServicePage.jsx";
 import Banner from "./components/Banner.jsx";
+import TopBanner from "./components/TopBanner.jsx"; // Import the new TopBanner component
 import ChatPage from './components/ChatPage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
 import ServiceDescription from './components/ServiceDescription.jsx';
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Banner/>
+      <TopBanner/>
       <Routes>
         <Route path="/" element={<ServicePage />} />
         <Route path="/services" element={<ServicePage />} />
