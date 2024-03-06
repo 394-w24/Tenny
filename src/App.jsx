@@ -8,6 +8,7 @@ import ProfilePage from './components/ProfilePage.jsx';
 import ServiceDescription from './components/ServiceDescription.jsx';
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileUpdate from './components/ProfileUpdate.jsx';
+import Schedule from './components/Schedule.jsx';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/serviceDescription/:id" element={<ServiceDescription/>} />
         <Route path="/myprofile" element={<ProfileUpdate/>} />
+        <Route path="/schedule" element={<Schedule />} />
       </Routes>
     </BrowserRouter>
   );

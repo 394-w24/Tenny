@@ -8,6 +8,8 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const data = [
   {
@@ -37,7 +39,9 @@ const data = [
   }
 ]
 
-const ServiceDescriptionCard = ({serviceId}) => {
+const ServiceDescriptionCard = ({ serviceId }) => {
+  const navigate = useNavigate(); // Hook to navigate
+
   return (
     <Card sx={{ maxWidth: "750px"}}>
       <CardHeader
@@ -47,7 +51,7 @@ const ServiceDescriptionCard = ({serviceId}) => {
         component="img"
         height="194"
         image={data[serviceId - 1].pictureUrl}
-        alt="Paella dish"
+        alt={data[serviceId - 1].serviceName}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -55,10 +59,10 @@ const ServiceDescriptionCard = ({serviceId}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button>Schedule Service</Button>
+        <Button onClick={() => navigate('/schedule')}>Schedule Service</Button>
       </CardActions>
     </Card>
   );
-}
+};
 
-export default ServiceDescriptionCard
+export default ServiceDescriptionCard;
