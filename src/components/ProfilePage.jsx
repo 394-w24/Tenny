@@ -90,7 +90,11 @@ function ProfilePage() {
         <>
             <Container maxWidth="sm" sx={{ mt: 2 }}>
                 <Box sx={{ textAlign: 'left', my: 2 }}>
-                    <Avatar alt="User's Picture" src="/bot.png" sx={{ width: 56, height: 56, margin: 'auto' }} />
+                    <Avatar
+                    alt="User's Picture"
+                    src="https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/avatar.png?alt=media&token=c9e35a5f-a5ca-4361-9c4d-2a26ea13cb7c"
+                    sx={{ width: 56, height: 56, margin: 'auto' }}
+                    />
                     <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', color: 'black' }}>
                         {firstName}
                     </Typography>
