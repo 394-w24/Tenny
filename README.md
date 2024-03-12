@@ -106,7 +106,7 @@ The product is a class project for [COMP_SCI 394: Agile Software Development](ht
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Run the program on your own computer:
+To run the program locally:
 
 ### Prerequisites
 
