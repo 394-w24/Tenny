@@ -18,7 +18,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][https://github.com/Jinx2000]
+[![Contributors][contributors-shield]](https://github.com/Jinx2000)
 [![MIT License][license-shield]][https://github.com/394-w24/Tenny/edit/main/LICENSE]
 
 
