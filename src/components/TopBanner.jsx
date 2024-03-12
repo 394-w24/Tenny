@@ -35,7 +35,7 @@ const TopBanner = () => {
           <img
             src="https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Tenny.png?alt=media&token=6fb4668f-d562-498b-a6f0-61069c3acb34"
             alt="Logo"
-            style={{ height: '50px' }}
+            style={{ height: '30px' }}
           />
         </Box>
         <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center' }}>

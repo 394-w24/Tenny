@@ -82,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://firebasestorage.googleapis.com/v0/b/ezapartments-a35e6.appspot.com/o/Screenshot%202024-03-12%20at%2005.01.50.png?alt=media&token=e0e7f193-e39f-4fc9-aef7-d9780beb926c)
 
 Tenny is a web-based app that features an AI chatbot among other functionalities designed to assist international students moving to Northwestern. With Tenny, students can access trustworthy resources to aid them with leasing issues. Tenny streamlines the relocation process by providing targeted information, empowering students to take control of their journey with confident decision-making.
 The product is a class project for [COMP_SCI 394: Agile Software Development](https://www.mccormick.northwestern.edu/computer-science/academics/courses/descriptions/394.html) at Northwestern University in Winter 2024. It was proposed by a group of Master of Product Design (MPD) students serving as clients and was developed by the Yellow Team. Given the time constraints, some features remain unimplemented. However, the team employed agile software development methodologies and managed to deliver the best possible outcome within the given timeframe.
