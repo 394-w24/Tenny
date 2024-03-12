@@ -2,10 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Router as MemoryRouter } from 'react-router-dom'; // Use MemoryRouter for tests involving navigation
+import { Router as MemoryRouter } from 'react-router-dom';
 import Banner from './Banner';
 import { createMemoryHistory } from 'history';
 
+//test default selection:
 test('Banner renders with Service tab selected by default', () => {
   render(
     <Router>
@@ -14,9 +15,10 @@ test('Banner renders with Service tab selected by default', () => {
   );
 
   const serviceTab = screen.getByRole('button', { name: 'Service' });
-  expect(serviceTab).toHaveClass('Mui-selected'); // Verify this class is correct as per MUI or your custom styles
+  expect(serviceTab).toHaveClass('Mui-selected');
 });
 
+//test clicking and navigating each tab:
 test('Clicking on Chat navigates to /chat', () => {
   const history = createMemoryHistory();
   render(
@@ -30,8 +32,9 @@ test('Clicking on Chat navigates to /chat', () => {
   expect(history.location.pathname).toBe('/chat');
 });
 
+//check if go to profile, will go to either page depending on whether loged in or not:
 test('Navigates to /profile if user phone number exists in local storage', () => {
-  Storage.prototype.getItem = jest.fn(() => '1234567890'); // Mock local storage
+  Storage.prototype.getItem = jest.fn(() => '1234567890');
   const history = createMemoryHistory();
   render(
     <MemoryRouter history={history}>
