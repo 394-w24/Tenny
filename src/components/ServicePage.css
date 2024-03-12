@@ -1,0 +1,13 @@
+.center-heading{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.welcome{
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  
+}

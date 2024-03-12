@@ -1,44 +1,31 @@
-import { useState } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-const App = () => {
-  const [count, setCount] = useState(0);
+import ServicePage from "./components/ServicePage.jsx";
+import Banner from "./components/Banner.jsx";
+import TopBanner from "./components/TopBanner.jsx"; // Import the new TopBanner component
+import ChatPage from './components/ChatPage.jsx';
+import ProfilePage from './components/ProfilePage.jsx';
+import ServiceDescription from './components/ServiceDescription.jsx';
+import "bootstrap/dist/css/bootstrap.min.css";
+import ProfileUpdate from './components/ProfileUpdate.jsx';
+import Schedule from './components/Schedule.jsx';
 
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test hot module replacement (HMR).
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Banner/>
+      <TopBanner/>
+      <Routes>
+        <Route path="/" element={<ServicePage />} />
+        <Route path="/services" element={<ServicePage />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/serviceDescription/:id" element={<ServiceDescription/>} />
+        <Route path="/myprofile" element={<ProfileUpdate/>} />
+        <Route path="/schedule" element={<Schedule />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
